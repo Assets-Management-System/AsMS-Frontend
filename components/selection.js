@@ -1,4 +1,5 @@
 import { Tabs, TabList, Tab, TabPanel, TabPanels } from "@chakra-ui/react"
+import Cards from "./cards"
 const Selection = () => {
   return (
   <Tabs isFitted variant='enclosed' mt={65} >
@@ -9,10 +10,10 @@ const Selection = () => {
   </TabList>
   <TabPanels>
     <TabPanel>
-      <p>one!</p>
+      <Cards></Cards>
     </TabPanel>
     <TabPanel>
-      <p>two!</p>
+      <Cards></Cards>
     </TabPanel>
   </TabPanels>
 </Tabs>)
