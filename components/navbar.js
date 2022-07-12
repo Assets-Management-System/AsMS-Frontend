@@ -9,13 +9,14 @@ import {
   MenuItem,
   MenuList,
   MenuButton,
-  IconButton
+  IconButton,
+  Button
 } from '@chakra-ui/react'
 import Logo from './logo'
 import ThemeToggleButton from './theme-toggle-button'
 import NextLink from 'next/link'
 import { HamburgerIcon } from '@chakra-ui/icons'
-
+import { useRouter } from 'next/router'
 
 const LinkItem = ({ href, path, children }) => {
   const active = path === href
@@ -36,6 +37,7 @@ const LinkItem = ({ href, path, children }) => {
 
 const Navbar = props => {
   const { path } = props
+  const router = useRouter()
 
   return (
     <Box
@@ -55,8 +57,9 @@ const Navbar = props => {
         maxW="-moz-max-content"
         wrap="wrap"
         align="center"
+        maxH="125"
       >
-        <Flex align="center" mr={5}>
+        <Flex align="center">
           <Logo></Logo>
         </Flex>
         <Stack
@@ -68,18 +71,18 @@ const Navbar = props => {
           flexGrow={8}
           mt={{ base: 4, nmd: 0 }}
         >
-          <LinkItem href="/about" path={path}>
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/about')} path={path} >
             About
-          </LinkItem>
-          <LinkItem href="/assets" path={path}>
+          </Button>
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/assets')} path={path}>
             Assets
-          </LinkItem>
-          <LinkItem href="#" path={path}>
-            Coming soon
-          </LinkItem>
-          <LinkItem href="#" path={path}>
-            Coming soon
-          </LinkItem>
+          </Button>
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
+            Coming Soon....
+          </Button>
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
+            Coming Soon....
+          </Button>
         </Stack>
         <Box flex={1} align="right" margin="auto">
           <ThemeToggleButton />
@@ -106,7 +109,6 @@ const Navbar = props => {
             </Menu>
           </Box>
         </Box>
-        
       </Container>
     </Box>
   )
