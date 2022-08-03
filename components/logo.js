@@ -31,7 +31,7 @@ const Logo = () => {
               fontFamily="Montserrat"
               fontWeight="bold"
               fontSize="30px"
-              ml={5}
+              ml={10}
             >
               Assets Management System
             </Text>

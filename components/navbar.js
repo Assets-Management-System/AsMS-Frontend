@@ -78,7 +78,7 @@ const Navbar = props => {
             Assets
           </Button>
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
-            Coming Soon....
+            Demo
           </Button>
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
             Coming Soon....

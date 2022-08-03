@@ -7,9 +7,10 @@ import {
   LinkBox,
   LinkOverlay
 } from '@chakra-ui/react'
+import Router from 'next/router'
 
 function Card(props) {
-  const { product, summary, longLine } = props
+  const { id, product, summary, longLine, path } = props
 
   return (
     <LinkBox
@@ -20,6 +21,13 @@ function Card(props) {
       margin={2}
       fontFamily="Montserrat"
       rounded="md"
+      onClick={() => Router.push({
+        pathname:'/details',
+        query: {
+          assetId: id
+        }
+      })}
+      path = {path}
     >
       <AspectRatio ratio={1 / 1}>
         <Image
