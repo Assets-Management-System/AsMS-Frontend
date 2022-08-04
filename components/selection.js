@@ -1,22 +1,12 @@
 import {
   Box,
-  Button,
   Flex,
   FormControl,
   FormHelperText,
   FormLabel,
   Icon,
-  Input,
   InputGroup,
   InputRightElement,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {
@@ -26,9 +16,9 @@ import {
   AutoCompleteList
 } from '@choc-ui/chakra-autocomplete'
 import { FiChevronRight, FiChevronDown } from 'react-icons/fi'
+import AddCategory from './layouts/modal'
 
-var category = ['Tech']
-function Selection() {
+function Selection({ categoryList }) {
   return (
     <Flex pt="10" justify="center" align="center" w="full">
       <FormControl w="container.lg">
@@ -44,13 +34,13 @@ function Selection() {
                   </InputRightElement>
                 </InputGroup>
                 <AutoCompleteList>
-                  {category.map((category, cid) => (
+                  {categoryList && categoryList.map((category) => (
                     <AutoCompleteItem
-                      key={`option-${cid}`}
-                      value={category}
+                      key={category._id}
+                      value={category.name}
                       textTransform="capitalize"
                     >
-                      {category}
+                      {category.name}
                     </AutoCompleteItem>
                   ))}
                 </AutoCompleteList>
@@ -62,85 +52,6 @@ function Selection() {
         <FormHelperText>Choose your category</FormHelperText>
       </FormControl>
     </Flex>
-  )
-}
-class Forms extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      category: ['Tech']
-    }
-  }
-
-  saveInput = e => {
-    this.setState({ input: e.target.value })
-  }
-
-  addNewItem = () => {
-    this.setState(prevState => ({
-      category: [...prevState.category, prevState.input],
-    }));
-  }
-}
-
-function AddCategory() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const initialRef = React.useRef(null)
-  const finalRef = React.useRef(null)
-
-  return (
-    <>
-      <Button
-        onClick={onOpen}
-        ml={5}
-        w="40px"
-        colorScheme="teal"
-        variant="solid"
-        fontSize={25}
-      >
-        +
-      </Button>
-      <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Adding</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <form id="form" onSubmit={onClose}>
-              <FormControl>
-                <FormLabel>Category Name</FormLabel>
-                <Input
-                  ref={initialRef}
-                  placeholder="category name"
-                  name="name"
-                  onChange={Forms.saveInput}
-                />
-              </FormControl>
-            </form>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button
-              colorScheme="teal"
-              mr={3}
-              type="submit"
-              form="form"
-              onClick={Forms.addNewItem}
-            >
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
   )
 }
 
