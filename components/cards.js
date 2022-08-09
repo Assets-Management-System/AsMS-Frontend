@@ -1,10 +1,18 @@
 import React from 'react'
-import { ChakraProvider, SimpleGrid, Container, Box } from '@chakra-ui/react'
+import {
+  ChakraProvider,
+  SimpleGrid,
+  Container,
+  Box,
+  Center,
+  Text
+} from '@chakra-ui/react'
 import Card from './layouts/card'
 import AddAssets from './layouts/drawer'
+import { AiOutlineArrowUp } from 'react-icons/ai'
 
-function Cards({ dataList }) {
-  return (
+function Cards({ dataList, selectedCategory }) {
+  return selectedCategory ? (
     <ChakraProvider>
       <Container maxW="80rem" pt={10} centerContent>
         <SimpleGrid columns={[1, 2, 1, 2]}>
@@ -20,12 +28,19 @@ function Cards({ dataList }) {
               />
             )
           })}
+
           <Box p={4} maxWidth="32rem" borderWidth={2} margin={2}>
-            <AddAssets></AddAssets>
+            <AddAssets selectedCategory={selectedCategory}></AddAssets>
           </Box>
         </SimpleGrid>
       </Container>
     </ChakraProvider>
+  ) : (
+    <Center fontSize="2xl">
+      <AiOutlineArrowUp color='teal'></AiOutlineArrowUp>
+      <Text mx={5}>Choose a category</Text>
+      <AiOutlineArrowUp color='teal'></AiOutlineArrowUp>
+    </Center>
   )
 }
 
