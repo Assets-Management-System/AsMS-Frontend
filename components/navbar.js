@@ -71,17 +71,17 @@ const Navbar = props => {
           flexGrow={8}
           mt={{ base: 4, nmd: 0 }}
         >
-          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/')} path={path} >
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/about')} path={path} >
             About
           </Button>
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/assets')} path={path}>
             Assets
           </Button>
-          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/coming')} path={path}>
-            Coming Soon
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
+            Demo
           </Button>
-          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/coming')} path={path}>
-            Coming Soon
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
+            Coming Soon....
           </Button>
         </Stack>
         <Box flex={1} align="right" margin="auto">
@@ -95,18 +95,16 @@ const Navbar = props => {
                 aria-label="Option"
               ></MenuButton>
               <MenuList>
-                <NextLink href="/" passHref>
+                <NextLink href="/about" passHref>
                   <MenuItem as={Link}>About</MenuItem>
                 </NextLink>
                 <NextLink href="/assets" passHref>
                   <MenuItem as={Link}>Assets</MenuItem>
                 </NextLink>
-                <NextLink href="/coming" passHref>
+                <NextLink href="#" passHref>
                   <MenuItem as={Link}>Coming soon</MenuItem>
                 </NextLink>
-                <NextLink href="/coming" passHref>
-                  <MenuItem as={Link}>Coming soon</MenuItem>
-                </NextLink>
+                <MenuItem as={Link}>Coming soon</MenuItem>
               </MenuList>
             </Menu>
           </Box>
