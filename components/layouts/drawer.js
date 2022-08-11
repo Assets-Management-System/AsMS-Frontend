@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import AWS from 'aws-sdk'
+import Router from 'next/router'
 
 const S3_BUCKET = process.env.NEXT_PUBLIC_BUCKET_NAME
 const AWS_REGION = process.env.NEXT_PUBLIC_REGION
@@ -31,7 +32,7 @@ const myBucket = new AWS.S3({
   region: AWS_REGION
 })
 
-function AddAssets() {
+function AddAssets({ selectedCategory }) {
   var [name, setName] = useState()
   var [description, setDescription] = useState()
   var [mfgDate, setMfgDate] = useState()
@@ -55,7 +56,7 @@ function AddAssets() {
     setCompany(event.target.value)
   }
 
-  const addAsset = async () => {
+  const addAsset = async callback => {
     const res = await fetch('/api/asset/add', {
       method: 'POST',
       headers: {
@@ -67,10 +68,12 @@ function AddAssets() {
         mfgDate: mfgDate,
         producer: producer,
         company: company,
-        fileUrl: fileUrl
+        fileUrl: fileUrl,
+        category: selectedCategory?._id
       })
     })
     const data = await res.json()
+    callback()
     console.log(data)
   }
 
@@ -156,7 +159,6 @@ function AddAssets() {
               <Box>
                 <FormLabel htmlFor="mfgDate">Mfg Date</FormLabel>
                 <Input
-                  ref={firstField}
                   id="mfgDate"
                   onChange={mfgUpdate}
                   placeholder="Please enter manufacturing date"
@@ -167,7 +169,6 @@ function AddAssets() {
               <Box>
                 <FormLabel htmlFor="producer">Producer</FormLabel>
                 <Input
-                  ref={firstField}
                   id="producer"
                   onChange={producerUpdate}
                   placeholder="Please enter the name of producer"
@@ -177,7 +178,6 @@ function AddAssets() {
               <Box>
                 <FormLabel htmlFor="company">Company</FormLabel>
                 <Input
-                  ref={firstField}
                   id="company"
                   onChange={companyUpdate}
                   placeholder="Please enter name of the company"
@@ -186,7 +186,7 @@ function AddAssets() {
 
               <Box>
                 <FormLabel htmlFor="asset">Upload Asset</FormLabel>
-                <div>Native SDK File Upload Progress is {progress}%</div>
+                <div>File Upload Progress is {progress}%</div>
                 <input type="file" onChange={handleFileInput}></input>
                 <Button
                   colorScheme="teal"
@@ -202,15 +202,18 @@ function AddAssets() {
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button
-              colorScheme="teal"
-              onClick={() => {
-                onClose()
-                addAsset()
-              }}
-            >
-              Submit
-            </Button>
+              <Button
+              isDisabled={progress!="100"}
+                colorScheme="teal"
+                onClick={() => {
+                  onClose()
+                  addAsset(() => {
+                    Router.reload(window.location.pathname)
+                  })
+                }}
+              >
+                Submit
+              </Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
