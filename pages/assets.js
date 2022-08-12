@@ -4,6 +4,7 @@ import { Box } from '@chakra-ui/react'
 import connectMongo from '../utils/connectMongo'
 import Asset from '../models/Asset'
 import Category from '../models/Category'
+import {useState} from 'react'
 
 export const getServerSideProps = async () => {
   console.log('CONNECTING TO MONGO')
@@ -30,16 +31,16 @@ export const getServerSideProps = async () => {
 }
 
 const asset = ({ assets, categories }) => {
-  return (
-    <Box>
-      <Selection categoryList={categories}></Selection>
-      <Cards dataList={assets}></Cards>
 
-      <div>
-        {assets.map(asset => {
-          return <p key={asset.name}> {asset.name} </p>
-        })}
-      </div>
+  const [selectedCategory, setSelectedCategory] = useState()
+
+  return (
+    
+    <Box>
+      <Selection categoryList={categories} setSelectedCategory={setSelectedCategory}></Selection>
+      <Cards dataList={assets.filter((asset) => {
+        return asset.category == selectedCategory?._id
+      })} selectedCategory={selectedCategory}></Cards>
     </Box>
   )
 }
