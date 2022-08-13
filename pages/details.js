@@ -1,4 +1,11 @@
-import { Box, Button, Divider, Heading, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Divider,
+  Heading,
+  Text,
+  Center,
+} from '@chakra-ui/react'
 import { FaTrashAlt } from 'react-icons/fa'
 import React from 'react'
 import { Worker, Viewer } from '@react-pdf-viewer/core'
@@ -26,15 +33,18 @@ export const getServerSideProps = async ({ query }) => {
 }
 
 async function deleteAsset(assetId, callback) {
-  const res = await fetch('/api/asset/delete?' + new URLSearchParams({
-    assetId
-  }), 
-  {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-  })
+  const res = await fetch(
+    '/api/asset/delete?' +
+      new URLSearchParams({
+        assetId
+      }),
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  )
   const data = await res.json()
   callback && callback(data.deleted.deletedCount > 0)
   console.log(data)
@@ -43,58 +53,68 @@ async function deleteAsset(assetId, callback) {
 function details({ asset }) {
   return asset ? (
     <Box mx={100}>
-    <Heading
-      size="3xl"
-      noOfLines={1}
-      textAlign="center"
-      pt={10}
-      pb={{ lg: 50, md: 100, sm: 100 }}
-    >
-      {asset.name}
-      <Divider orientation="horizontal" bgColor="teal"></Divider>
-    </Heading>
-
-    <Box display="flex">
-      <Box
-        flex={2}
-        maxH={600}
-        border="2px"
-        borderRadius="md"
-        rounded="md"
-        borderColor="teal"
-        mr={10}
+      <Heading
+        size="3xl"
+        noOfLines={1}
+        textAlign="center"
+        pt={10}
+        pb={{ lg: 50, md: 100, sm: 100 }}
       >
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js">
-          <Viewer fileUrl={asset.fileUrl} />
-        </Worker>
-      </Box>
-      <Box flex={1}>
+        {asset.name}
+        <Divider orientation="horizontal" bgColor="teal"></Divider>
+      </Heading>
+
+      <Box display="flex">
         <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          mb={10}
+          flex={2}
+          maxH={600}
+          border="2px"
+          borderRadius="md"
+          rounded="md"
+          borderColor="teal"
+          mr={10}
         >
-          <Button color="red.600" w={{ lg: 200, md: 100 }} h={50} onClick={()=>{
-            console.log(asset._id)
-            deleteAsset(asset._id, (isDeleted) => {
-              // executed after deletion
-              console.log(isDeleted);
-            })
-          }}>
-            <FaTrashAlt />
-          </Button>
+          <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.14.305/build/pdf.worker.min.js">
+            <Viewer fileUrl={asset.fileUrl} />
+          </Worker>
         </Box>
-        <Text fontSize="2xl">Description: {asset.description}</Text>
-        <Text fontSize="2xl">
-          MFG Date: {moment(asset.mfgDate).format('MMMM do yyyy')}
-        </Text>
-        <Text fontSize="2xl">Producer: {asset.producer}</Text>
-        <Text fontSize="2xl">Company: {asset.company}</Text>
+        <Box flex={1}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mb={10}
+          >
+            <Button
+              color="red.600"
+              w={{ lg: 200, md: 100 }}
+              h={50}
+              onClick={() => {
+                console.log(asset._id)
+                deleteAsset(asset._id, isDeleted => {
+                  // executed after deletion
+                  console.log(isDeleted)
+                  window.location.replace('http://localhost:3000/assets')
+                })
+              }}
+            >
+              <FaTrashAlt />
+            </Button>
+          </Box>
+          <Text fontSize="2xl">Description: {asset.description}</Text>
+          <Text fontSize="2xl">
+            MFG Date: {moment(asset.mfgDate).format('MMMM do yyyy')}
+          </Text>
+          <Text fontSize="2xl">Producer: {asset.producer}</Text>
+          <Text fontSize="2xl">Company: {asset.company}</Text>
+        </Box>
       </Box>
     </Box>
-  </Box>) : (<Text mt={20}>Not found</Text>)
-    
-    }
+  ) : (
+    <Center fontSize="8xl" bg="teal" mt={20} h="2xl">
+      Not Found
+    </Center>
+  )
+}
 
 export default details
