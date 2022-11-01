@@ -10,8 +10,8 @@ import Logo from './footerLogo'
 
 const bottomNav = () => {
   return (
-    <Container as="footer" role="contentinfo" py={{ base: '4', md: '6' }} maxW="100%">
-      <Stack spacing={{ base: '1', md: '2' }} >
+    <Container as="footer" role="contentinfo" pt={{ base: '4', md: '6' }} maxW="100%" >
+      <Stack spacing={1} >
         <Stack justify="space-between" direction="row" align="center">
           <Logo />
           <ButtonGroup variant="ghost" pr={10}>
@@ -36,7 +36,7 @@ const bottomNav = () => {
           </ButtonGroup>
         </Stack>
         <Text align='center' fontSize="sm" color="subtle">
-          &copy; {new Date().getFullYear()} Chakra UI Pro, Inc. All rights
+          &copy; {new Date().getFullYear()} ISHA DABAS/UZAIR NAQVI @ All rights
           reserved.
         </Text>
       </Stack>

@@ -7,6 +7,8 @@ const LogoBox = styled.span`
   display: inline-flex;
   align-items: center;
   height: 80px;
+  float: left;
+  align: left;
   &:hover img {
     transform: rotate(10deg);
   }
