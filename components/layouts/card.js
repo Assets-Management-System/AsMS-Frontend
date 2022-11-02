@@ -32,8 +32,8 @@ function Card(props) {
       <AspectRatio ratio={1 / 1}>
         <Image
           margin="auto"
-          src="images/woman.jpeg"
-          alt="Woman's Swag"
+          src="images/pdf.png"
+          alt="PDF"
           rounded="md"
         />
       </AspectRatio>

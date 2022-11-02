@@ -13,6 +13,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 import React, { Component, useState} from 'react'
+import Router from 'next/router'
 
 class Forms extends Component {
   constructor(props) {
@@ -98,6 +99,7 @@ function AddCategory() {
               onClick={() => {
                 addCategory(name)
                 onClose()
+                Router.reload(window.location.pathname)
               }}
             >
               Save
