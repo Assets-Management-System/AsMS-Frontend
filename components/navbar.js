@@ -54,7 +54,7 @@ const Navbar = props => {
         display="flex"
         justifyContent="space-between"
         p={2}
-        maxW="-moz-max-content"
+        maxW="-webkit-max-content"
         wrap="wrap"
         align="center"
         maxH="125"
@@ -63,12 +63,13 @@ const Navbar = props => {
           <Logo></Logo>
         </Flex>
         <Stack
+        spacing={10}
           direction={{ base: 'column', md: 'row' }}
           display={{ base: 'none', md: 'flex' }}
           width={{ base: 'full', md: 'auto' }}
           alignItems="center"
-          justify={['center', 'space-between', 'flex-end', 'flex-end']}
-          flexGrow={8}
+          justify={['center', 'space-between', 'flex-end']}
+          flexGrow={6}
           mt={{ base: 4, nmd: 0 }}
         >
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/about')} path={path} >
@@ -78,13 +79,10 @@ const Navbar = props => {
             Assets
           </Button>
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
-            Coming Soon....
-          </Button>
-          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
-            Coming Soon....
+            Contact Us
           </Button>
         </Stack>
-        <Box flex={1} align="right" margin="auto">
+        <Box pr={10} pl={20} flex={1} align="right" margin="auto">
           <ThemeToggleButton />
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu>

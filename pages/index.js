@@ -1,6 +1,7 @@
+import about from "./about"
 const page = () => {
     return (
-        <div> </div>
+        <about></about>
     )
 } 
 
