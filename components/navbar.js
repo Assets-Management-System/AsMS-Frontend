@@ -60,7 +60,7 @@ const Navbar = props => {
         align="center"
         maxH="125"
       >
-        <Flex align="center">
+        <Flex align="left">
           <Logo></Logo>
         </Flex>
         <Stack
@@ -80,7 +80,7 @@ const Navbar = props => {
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/assets')} path={path}>
             Assets
           </Button>
-          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/#')} path={path}>
+          <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/contact')} path={path}>
             Contact Us
           </Button>
         </Stack>

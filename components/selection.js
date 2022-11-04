@@ -2,7 +2,6 @@ import {
   Box,
   Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
   Icon,
   InputGroup,
@@ -18,7 +17,7 @@ import {
 import { FiChevronRight, FiChevronDown } from 'react-icons/fi'
 import AddCategory from './layouts/modal'
 
-function Selection({ categoryList }) {
+function Selection({ categoryList, setSelectedCategory }) {
   return (
     <Flex pt="10" justify="center" align="center" w="full">
       <FormControl w="container.lg">
@@ -39,6 +38,9 @@ function Selection({ categoryList }) {
                       key={category._id}
                       value={category.name}
                       textTransform="capitalize"
+                      onClick={() => {
+                        setSelectedCategory(category)
+                      }}
                     >
                       {category.name}
                     </AutoCompleteItem>
@@ -49,7 +51,6 @@ function Selection({ categoryList }) {
           </AutoComplete>
           <AddCategory></AddCategory>
         </Box>
-        <FormHelperText>Choose your category</FormHelperText>
       </FormControl>
     </Flex>
   )
