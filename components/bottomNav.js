@@ -18,25 +18,25 @@ const bottomNav = () => {
           <ButtonGroup variant="ghost" pr={10}>
             <IconButton
               as="a"
-              href="#"
+              href="https://www.linkedin.com/in/isha-dabas-b21889206/"
               aria-label="LinkedIn"
-              icon={<FaLinkedin fontSize="1.25rem" />}
+              icon={<FaLinkedin fontSize="1.25rem" size={30} />}
             />
             <IconButton
               as="a"
-              href="#"
+              href="https://github.com/IshaDabas"
               aria-label="GitHub"
-              icon={<FaGithub fontSize="1.25rem" />}
+              icon={<FaGithub fontSize="1.25rem" size={30} />}
             />
             <IconButton
               as="a"
-              href="#"
+              href="https://twitter.com/IshaDabas10"
               aria-label="Twitter"
-              icon={<FaTwitter fontSize="1.25rem" />}
+              icon={<FaTwitter fontSize="1.25rem" size={30}/>}
             />
           </ButtonGroup>
         </Stack>
-        <Text fontSize="sm" color="subtle">
+        <Text align='center' fontSize="sm" color="subtle">
           &copy; {new Date().getFullYear()} Chakra UI Pro, Inc. All rights
           reserved.
         </Text>
