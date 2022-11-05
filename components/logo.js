@@ -23,7 +23,6 @@ const Logo = () => {
             alt="AsMS"
             width="100"
             height="70"
-            paddingLeft="10"
             objectFit="contain"
           ></Image>
           <Hide below="lg">
@@ -31,8 +30,9 @@ const Logo = () => {
               color={useColorModeValue('gray.800', 'whiteAlpha.900')}
               fontFamily="Montserrat"
               fontWeight="bold"
-              fontSize="25px"
-              ml={10}
+              fontSize="20px"
+              paddingRight="10"
+              ml={5}
               as="u">
               Assets Management System
             </Text>

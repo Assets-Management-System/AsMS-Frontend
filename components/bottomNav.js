@@ -1,4 +1,5 @@
 import {
+  Box,
   ButtonGroup,
   Container,
   IconButton,
@@ -9,12 +10,12 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import Logo from './logo'
 
 const bottomNav = () => {
-  return(
-    <Container as="footer" role="contentinfo" py={{ base: '12', md: '16' }}>
-      <Stack spacing={{ base: '4', md: '5' }}>
-        <Stack justify="space-between" direction="row" align="stretch ">
+  return (
+    <Container as="footer" role="contentinfo" py={{ base: '4', md: '6' }} maxW="100%">
+      <Stack spacing={{ base: '2', md: '3' }} >
+        <Stack justify="space-between" direction="row" align="center">
           <Logo />
-          <ButtonGroup variant="ghost">
+          <ButtonGroup variant="ghost" pr={10}>
             <IconButton
               as="a"
               href="#"
@@ -42,7 +43,6 @@ const bottomNav = () => {
       </Stack>
     </Container>
   )
-  }
-
+}
 
 export default bottomNav

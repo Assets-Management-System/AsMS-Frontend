@@ -43,6 +43,7 @@ const Navbar = props => {
     <Box
       position="fixed"
       w="100%"
+      px={10}
       style={{ backdropFilter: 'blur(10px)' }}
       fontFamily="Montserrat"
       bg={useColorModeValue('#ffffff40', '#20202380')}
@@ -70,6 +71,7 @@ const Navbar = props => {
           alignItems="center"
           justify={['center', 'space-between', 'flex-end']}
           flexGrow={6}
+          px={10}
           mt={{ base: 4, nmd: 0 }}
         >
           <Button colorScheme="teal" variant="ghost" onClick={() => router.push('/about')} path={path} >
@@ -82,7 +84,7 @@ const Navbar = props => {
             Contact Us
           </Button>
         </Stack>
-        <Box pr={10} pl={20} flex={1} align="right" margin="auto">
+        <Box flex={1} align="right" margin="auto">
           <ThemeToggleButton />
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu>
