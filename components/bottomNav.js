@@ -1,5 +1,4 @@
 import {
-  Box,
   ButtonGroup,
   Container,
   IconButton,
@@ -7,12 +6,12 @@ import {
   Text
 } from '@chakra-ui/react'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import Logo from './logo'
+import Logo from './footerLogo'
 
 const bottomNav = () => {
   return (
     <Container as="footer" role="contentinfo" py={{ base: '4', md: '6' }} maxW="100%">
-      <Stack spacing={{ base: '2', md: '3' }} >
+      <Stack spacing={{ base: '1', md: '2' }} >
         <Stack justify="space-between" direction="row" align="center">
           <Logo />
           <ButtonGroup variant="ghost" pr={10}>
