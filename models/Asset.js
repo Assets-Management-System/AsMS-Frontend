@@ -7,6 +7,7 @@ const assetSchema = new Schema({
   producer: String,
   company: String,
   fileUrl: String,
+  category: [{ type: Schema.Types.ObjectId, ref: 'Category', required: true }]
 });
 
 const Asset = models.Asset || model('Asset', assetSchema);
