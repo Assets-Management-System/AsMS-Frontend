@@ -10,8 +10,13 @@ import Logo from './footerLogo'
 
 const bottomNav = () => {
   return (
-    <Container as="footer" role="contentinfo" pt={{ base: '4', md: '6' }} maxW="100%" >
-      <Stack spacing={1} >
+    <Container
+      as="footer"
+      role="contentinfo"
+      pt={{ base: '4', md: '6' }}
+      maxW="100%"
+    >
+      <Stack spacing={1}>
         <Stack justify="space-between" direction="row" align="center">
           <Logo />
           <ButtonGroup variant="ghost" pr={10}>
@@ -31,13 +36,12 @@ const bottomNav = () => {
               as="a"
               href="https://twitter.com/IshaDabas10"
               aria-label="Twitter"
-              icon={<FaTwitter fontSize="1.25rem" size={30}/>}
+              icon={<FaTwitter fontSize="1.25rem" size={30} />}
             />
           </ButtonGroup>
         </Stack>
-        <Text align='center' fontSize="sm" color="subtle">
-          &copy; {new Date().getFullYear()} ISHA DABAS/UZAIR NAQVI @ All rights
-          reserved.
+        <Text align="center" fontSize="sm" color="subtle">
+          &copy; {new Date().getFullYear()} ISHA DABAS @ All rights reserved.
         </Text>
       </Stack>
     </Container>

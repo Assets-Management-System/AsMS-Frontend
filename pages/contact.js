@@ -1,12 +1,7 @@
-import {
-    Box,
-    Image,
-    Text,
-    useColorModeValue
-  } from '@chakra-ui/react'
+import { Box, Image, Text, useColorModeValue } from '@chakra-ui/react'
 import styled from '@emotion/styled'
-  
-  const LogoBox = styled.span`
+
+const LogoBox = styled.span`
   display: inline-flex;
   align-items: center;
   height: 300px;
@@ -14,14 +9,21 @@ import styled from '@emotion/styled'
   align: left;
 `
 
-  const contact = () => {
-    return (
+const contact = () => {
+  return (
+    <Box
+      p={20}
+      align="left"
+      width="100%"
+      bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+    >
       <Box
-        p={20}
-        align="left"
-        width="100%"
-        bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}>
-        <Box borderColor="black" p="6" rounded="md" bg="whiteAlpha.100" maxHeight="100%">
+        borderColor="black"
+        p="6"
+        rounded="md"
+        bg="whiteAlpha.100"
+        maxHeight="100%"
+      >
         <LogoBox>
           <Image
             src={`/images/AsMS_Logo.png`}
@@ -35,17 +37,12 @@ import styled from '@emotion/styled'
           <Text fontSize="2xl" pt={90}>
             Isha Dabas <br></br>
             ishadabas@icloud.com<br></br>
-            9599137351</Text>
-            <Text fontSize="2xl" pl={8} pt={90}>
-            Uzair Naqvi<br></br> 
-            unaqvi14@gmail.com<br></br>
-            8505891858
+            9599137351
           </Text>
-          </Box>
         </Box>
       </Box>
-    )
-  }
-  
-  export default contact
-  
+    </Box>
+  )
+}
+
+export default contact
